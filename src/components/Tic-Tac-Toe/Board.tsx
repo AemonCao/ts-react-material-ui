@@ -3,17 +3,19 @@ import * as Square from "./Square";
 
 export interface IProps {
   squares: string[];
-  onClick: Function;
+  onClick: (i: number) => void;
 }
 
-const Board: React.FC<IProps> = props => {
+const Board: React.FC<IProps> = (props) => {
   const { squares, onClick } = props;
   const renderSquare = function (i: number) {
     const squareProps: Square.IProps = {
       value: squares[i],
-      onClick: () => onClick(i)
-    }
-    return (<Square.default {...squareProps} />);
+      onClick: () => {
+        onClick(i);
+      },
+    };
+    return <Square.default {...squareProps} />;
   };
   return (
     <div>

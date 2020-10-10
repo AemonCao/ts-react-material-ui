@@ -3,7 +3,7 @@ import * as Board from "./Board";
 
 export interface IProps {
   squares: string[];
-  onClick: Function;
+  onClick: (i: number) => void;
 }
 
 export interface IState {
@@ -102,15 +102,17 @@ class Game extends React.Component<IProps, IState> {
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
+
+    const boardProps: Board.IProps = {
+      squares: current.squares,
+      onClick: (i: number) => {
+        this.handleClick(i);
+      },
+    };
     return (
       <div className="game">
         <div className="game-board">
-          <Board.default
-            squares={current.squares}
-            onClick={(i: number) => {
-              this.handleClick(i);
-            }}
-          />
+          <Board.default {...boardProps} />
         </div>
         <div className="game-info">
           <div>{status}</div>

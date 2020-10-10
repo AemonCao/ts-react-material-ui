@@ -2,12 +2,18 @@ import * as React from "react";
 
 export interface IProps {
   value: string;
-  onClick: (i: string) => {};
+  onClick: Function;
 }
 
-const Square: React.FC<IProps> = ({ value, onClick }) => {
+const Square: React.FC<IProps> = (props) => {
+  const { value, onClick } = props;
   return (
-    <button className="square" onClick={() => onClick(value)}>
+    <button
+      className="square"
+      onClick={() => {
+        onClick();
+      }}
+    >
       {value}
     </button>
   );
