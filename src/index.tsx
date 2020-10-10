@@ -3,4 +3,9 @@ import ReactDOM from "react-dom";
 import Game from "./components/Tic-Tac-Toe/Game";
 import "./index.css";
 
-ReactDOM.render(<Game />, document.getElementById("root"));
+ReactDOM.render(
+  <React.StrictMode>
+    <Game />
+  </React.StrictMode>,
+  document.getElementById("root")
+);

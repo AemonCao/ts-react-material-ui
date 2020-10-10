@@ -2,10 +2,7 @@ import * as React from "react";
 import * as Board from "./Board";
 import Button from "@material-ui/core/Button";
 
-export interface IProps {
-  squares: string[];
-  onClick: (i: number) => void;
-}
+export interface IProps {}
 
 export interface IState {
   history: { squares: string[] }[];
