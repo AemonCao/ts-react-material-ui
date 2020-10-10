@@ -1,3 +1,4 @@
 {
+    // 自动换行
     "editor.wordWrap": "on"
 }
