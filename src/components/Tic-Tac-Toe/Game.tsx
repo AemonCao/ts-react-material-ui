@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as Board from "./Board";
+import Button from "@material-ui/core/Button";
 
 export interface IProps {
   squares: string[];
@@ -91,7 +92,14 @@ class Game extends React.Component<IProps, IState> {
       const desc = move ? "Go to Move #" + move : "Go to game start";
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <Button
+            variant="outlined"
+            size="small"
+            color="primary"
+            onClick={() => this.jumpTo(move)}
+          >
+            {desc}
+          </Button>
         </li>
       );
     });
