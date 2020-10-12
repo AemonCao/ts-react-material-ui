@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as Board from "./Board";
+import { Board, IProps as BoardIProps } from "./Board";
 import Button from "@material-ui/core/Button";
 
 export interface IProps {}
@@ -108,7 +108,7 @@ class Game extends React.Component<IProps, IState> {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
 
-    const boardProps: Board.IProps = {
+    const boardProps: BoardIProps = {
       squares: current.squares,
       onClick: (i: number) => {
         this.handleClick(i);
@@ -117,7 +117,7 @@ class Game extends React.Component<IProps, IState> {
     return (
       <div className="game">
         <div className="game-board">
-          <Board.default {...boardProps} />
+          <Board {...boardProps} />
         </div>
         <div className="game-info">
           <div>{status}</div>

@@ -5,7 +5,7 @@ export interface IProps {
   onClick: Function;
 }
 
-const Square: React.FC<IProps> = (props) => {
+export const Square: React.FC<IProps> = (props) => {
   const { value, onClick } = props;
   return (
     <button
@@ -18,5 +18,3 @@ const Square: React.FC<IProps> = (props) => {
     </button>
   );
 };
-
-export default Square;

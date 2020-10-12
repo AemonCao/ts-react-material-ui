@@ -1,21 +1,21 @@
 import * as React from "react";
-import * as Square from "./Square";
+import { Square, IProps as SquareIProps } from "./Square";
 
 export interface IProps {
   squares: string[];
   onClick: (i: number) => void;
 }
 
-const Board: React.FC<IProps> = (props) => {
+export const Board: React.FC<IProps> = (props) => {
   const { squares, onClick } = props;
   const renderSquare = function (i: number) {
-    const squareProps: Square.IProps = {
+    const squareProps: SquareIProps = {
       value: squares[i],
       onClick: () => {
         onClick(i);
       },
     };
-    return <Square.default {...squareProps} />;
+    return <Square {...squareProps} />;
   };
   return (
     <div>
@@ -37,5 +37,3 @@ const Board: React.FC<IProps> = (props) => {
     </div>
   );
 };
-
-export default Board;

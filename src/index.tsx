@@ -4,6 +4,7 @@ import Game from "./components/Tic-Tac-Toe/Game";
 import "./index.css";
 
 ReactDOM.render(
+  // 严格模式
   <React.StrictMode>
     <Game />
   </React.StrictMode>,
