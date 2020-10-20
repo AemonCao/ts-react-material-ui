@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Game from "../components/Tic-Tac-Toe/Game";
 import Clock from "../components/Clock/Clock";
+import Toggle from "../components/Toggle/Toggle";
 import {
   makeStyles,
   useTheme,
@@ -182,15 +183,19 @@ const App: React.FC = () => {
                 <li>
                   <Link to="/clock">Clock</Link>
                 </li>
+                <li>
+                  <Link to="/toggle">Toggle</Link>
+                </li>
               </ul>
             </nav>
 
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
+              <Route path="/toggle">
+                <Toggle />
+              </Route>
               <Route path="/clock">
-                <Clock />
-                <Clock />
                 <Clock />
               </Route>
               <Route path="/game">
