@@ -9,6 +9,7 @@ import {
   useParams,
 } from "react-router-dom";
 import Game from "../components/Tic-Tac-Toe/Game";
+import Clock from "../components/Clock/Clock";
 import {
   makeStyles,
   useTheme,
@@ -178,12 +179,20 @@ const App: React.FC = () => {
                 <li>
                   <Link to="/topics">Topics</Link>
                 </li>
+                <li>
+                  <Link to="/clock">Clock</Link>
+                </li>
               </ul>
             </nav>
 
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
+              <Route path="/clock">
+                <Clock />
+                <Clock />
+                <Clock />
+              </Route>
               <Route path="/game">
                 <Game />
               </Route>
@@ -245,8 +254,8 @@ function Topics() {
   );
 }
 
-function Topic() {
-  let { topicId, num } = useParams();
+function Topic(): JSX.Element {
+  let { topicId, num }: { topicId: string; num: string } = useParams();
   return (
     <h3>
       Requested topic ID: {topicId},num: {num}
