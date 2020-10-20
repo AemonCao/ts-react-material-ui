@@ -19,7 +19,6 @@ import {
   AppBar,
   Toolbar,
   Typography,
-  Button,
   IconButton,
   CssBaseline,
   List,
@@ -43,7 +42,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: { display: "flex" },
     appBar: {
-      transform: theme.transitions.create(["margin", "width"], {
+      transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
@@ -51,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
     appBarShift: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
-      transform: theme.transitions.create(["margin", "width"], {
+      transition: theme.transitions.create(["margin", "width"], {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
@@ -70,7 +69,7 @@ const useStyles = makeStyles((theme: Theme) =>
     content: {
       flexGrow: 1,
       padding: theme.spacing(3),
-      transform: theme.transitions.create("margin", {
+      transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
@@ -83,7 +82,6 @@ const useStyles = makeStyles((theme: Theme) =>
       }),
       marginLeft: 0,
     },
-    title: { flexGrow: 1 },
   })
 );
 
@@ -99,9 +97,10 @@ const App: React.FC = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   return (
-    <div>
-      <div className={classes.root}>
+    <div className={classes.root}>
+      <Router>
         <CssBaseline />
         <AppBar
           position="fixed"
@@ -147,42 +146,56 @@ const App: React.FC = () => {
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText />
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {["All mail", "Trash", "Spam"].map((text, index) => (
+              <ListItem button key={text}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
               </ListItem>
             ))}
           </List>
         </Drawer>
-      </div>
-      <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/game">Game</Link>
-              </li>
-              <li>
-                <Link to="/topics">Topics</Link>
-              </li>
-            </ul>
-          </nav>
+        <main
+          className={clsx(classes.content, { [classes.contentShift]: open })}
+        >
+          <div className={classes.drawerHeader} />
+          <div>
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/game">Game</Link>
+                </li>
+                <li>
+                  <Link to="/topics">Topics</Link>
+                </li>
+              </ul>
+            </nav>
 
-          {/* A <Switch> looks through its children <Route>s and
+            {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-          <Switch>
-            <Route path="/game">
-              <Game />
-            </Route>
-            <Route path="/topics">
-              <Topics />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </div>
+            <Switch>
+              <Route path="/game">
+                <Game />
+              </Route>
+              <Route path="/topics">
+                <Topics />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </div>
+        </main>
       </Router>
     </div>
   );
