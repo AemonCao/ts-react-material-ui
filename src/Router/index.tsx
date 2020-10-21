@@ -11,6 +11,8 @@ import {
 import Game from "../components/Tic-Tac-Toe/Game";
 import Clock from "../components/Clock/Clock";
 import Toggle from "../components/Toggle/Toggle";
+import LoginControl from "../components/LoginControl/LoginControl";
+import NameForm from "../components/Form/NameForm";
 import {
   makeStyles,
   useTheme,
@@ -186,12 +188,24 @@ const App: React.FC = () => {
                 <li>
                   <Link to="/toggle">Toggle</Link>
                 </li>
+                <li>
+                  <Link to="/LoginControl">LoginControl</Link>
+                </li>
+                <li>
+                  <Link to="/NameForm">NameForm</Link>
+                </li>
               </ul>
             </nav>
 
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
+              <Route path="/NameForm">
+                <NameForm />
+              </Route>
+              <Route path="/LoginControl">
+                <LoginControl />
+              </Route>
               <Route path="/toggle">
                 <Toggle />
               </Route>
