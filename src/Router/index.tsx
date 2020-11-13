@@ -15,7 +15,7 @@ import LoginControl from "../components/LoginControl/LoginControl";
 import NameForm from "../components/Form/NameForm";
 import EssayForm from "../components/Form/EssayForm";
 import FlavorForm from "../components/Form/FlavorForm";
-import Calculator from "../components/LiftingStateUp/Calculator";
+import { Calculator } from "../components/LiftingStateUp/Calculator";
 
 import {
   makeStyles,
@@ -205,7 +205,7 @@ const App: React.FC = () => {
                   <Link to="/FlavorForm">FlavorForm</Link>
                 </li>
                 <li>
-                  <Link to="/Calculator">Calculator</Link>
+                  <Link to="/Calculator">Lifting State Up</Link>
                 </li>
               </ul>
             </nav>

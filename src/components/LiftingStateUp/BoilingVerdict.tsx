@@ -6,7 +6,7 @@ interface IProps {
   celsius: number;
 }
 
-export default class BoilingVerdict extends React.Component<IProps, IState> {
+export class BoilingVerdict extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {};
