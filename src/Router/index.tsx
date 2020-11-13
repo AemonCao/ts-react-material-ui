@@ -13,6 +13,10 @@ import Clock from "../components/Clock/Clock";
 import Toggle from "../components/Toggle/Toggle";
 import LoginControl from "../components/LoginControl/LoginControl";
 import NameForm from "../components/Form/NameForm";
+import EssayForm from "../components/Form/EssayForm";
+import FlavorForm from "../components/Form/FlavorForm";
+import Calculator from "../components/LiftingStateUp/Calculator";
+
 import {
   makeStyles,
   useTheme,
@@ -194,12 +198,30 @@ const App: React.FC = () => {
                 <li>
                   <Link to="/NameForm">NameForm</Link>
                 </li>
+                <li>
+                  <Link to="/EssayForm">EssayForm</Link>
+                </li>
+                <li>
+                  <Link to="/FlavorForm">FlavorForm</Link>
+                </li>
+                <li>
+                  <Link to="/Calculator">Calculator</Link>
+                </li>
               </ul>
             </nav>
 
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
+              <Route path="/Calculator">
+                <Calculator />
+              </Route>
+              <Route path="/FlavorForm">
+                <FlavorForm />
+              </Route>
+              <Route path="/EssayForm">
+                <EssayForm />
+              </Route>
               <Route path="/NameForm">
                 <NameForm />
               </Route>

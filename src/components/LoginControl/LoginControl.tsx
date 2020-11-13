@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Greeting } from "./Greeting";
+import Button from "@material-ui/core/Button"
 
 export interface IProps {}
 
@@ -45,9 +46,9 @@ export default class LoginControl extends React.Component<IProps, IState> {
 }
 
 function LoginButton(props: IButtonProps) {
-  return <button onClick={props.onClick}>Login</button>;
+  return <Button onClick={props.onClick}>Login</Button>;
 }
 
 function LogoutButton(props: IButtonProps) {
-  return <button onClick={props.onClick}>Logount</button>;
+  return <Button onClick={props.onClick}>Logount</Button>;
 }

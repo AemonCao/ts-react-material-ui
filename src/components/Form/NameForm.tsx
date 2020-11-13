@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Input, InputLabel, FormHelperText } from "@material-ui/core";
+import { Input, FormHelperText } from "@material-ui/core";
 
 interface IProps {}
 
