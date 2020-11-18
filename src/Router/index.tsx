@@ -16,6 +16,8 @@ import NameForm from "../components/Form/NameForm";
 import EssayForm from "../components/Form/EssayForm";
 import FlavorForm from "../components/Form/FlavorForm";
 import { Calculator } from "../components/LiftingStateUp/Calculator";
+import { WelcomeDialog } from "../components/Composition-vs-Inheritance/WelcomeDialog";
+import { SplitPane } from "../components/Composition-vs-Inheritance/SplitPane";
 
 import {
   makeStyles,
@@ -207,12 +209,21 @@ const App: React.FC = () => {
                 <li>
                   <Link to="/Calculator">Lifting State Up</Link>
                 </li>
+                <li>
+                  <Link to="/Composition-vs-Inheritance">
+                    Composition-vs-Inheritance
+                  </Link>
+                </li>
               </ul>
             </nav>
 
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
+              <Route path="/Composition-vs-Inheritance">
+                <WelcomeDialog />
+                <SplitPane left={<h1>left</h1>} right={<h1>right</h1>} />
+              </Route>
               <Route path="/Calculator">
                 <Calculator />
               </Route>
