@@ -21,6 +21,7 @@ import { SplitPane } from "../components/Composition-vs-Inheritance/SplitPane";
 import { Contacts } from "../components/Composition-vs-Inheritance/Contacts";
 import { Chat } from "../components/Composition-vs-Inheritance/Chat";
 import { SignUpDialog } from "../components/Composition-vs-Inheritance/SignUpDialog";
+import { FilterableProductTable } from "../components/Thinking-In-React/FilterableProductTable";
 
 import {
   makeStyles,
@@ -217,12 +218,57 @@ const App: React.FC = () => {
                     Composition-vs-Inheritance
                   </Link>
                 </li>
+                <li>
+                  <Link to="/Thinking-In-React">Thinking-In-React</Link>
+                </li>
               </ul>
             </nav>
 
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
+              <Route path="/Thinking-In-React">
+                <FilterableProductTable
+                  products={[
+                    {
+                      category: "Sporting Goods",
+                      price: "$49.99",
+                      stocked: true,
+                      name: "Football",
+                    },
+                    {
+                      category: "Sporting Goods",
+                      price: "$9.99",
+                      stocked: true,
+                      name: "Baseball",
+                    },
+                    {
+                      category: "Sporting Goods",
+                      price: "$29.99",
+                      stocked: false,
+                      name: "Basketball",
+                    },
+                    {
+                      category: "Electronics",
+                      price: "$99.99",
+                      stocked: true,
+                      name: "iPod Touch",
+                    },
+                    {
+                      category: "Electronics",
+                      price: "$399.99",
+                      stocked: false,
+                      name: "iPhone 5",
+                    },
+                    {
+                      category: "Electronics",
+                      price: "$199.99",
+                      stocked: true,
+                      name: "Nexus 7",
+                    },
+                  ]}
+                ></FilterableProductTable>
+              </Route>
               <Route path="/Composition-vs-Inheritance">
                 <WelcomeDialog />
                 <SplitPane left={<Contacts />} right={<Chat />} />
