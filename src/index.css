@@ -69,7 +69,7 @@ ul {
 
 .Contacts {
   width: 100%;
-  height: 100px; 
+  height: 100px;
   background: lightblue;
 }
 
@@ -77,4 +77,22 @@ ul {
   width: 100%;
   height: 100px;
   background: pink;
+}
+
+.FancyBorder {
+  padding: 10px 10px;
+  border: 10px solid;
+}
+
+.FancyBorder-blue {
+  border-color: blue;
+}
+
+.Dialog-title {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.Dialog-message {
+  font-size: larger;
 }

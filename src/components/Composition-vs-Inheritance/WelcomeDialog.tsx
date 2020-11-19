@@ -1,8 +1,6 @@
 import React from "react";
 import { Dialog } from "./Dialog";
 
-interface IState {}
-
 interface IProps {}
 
 export const WelcomeDialog: React.FC<IProps> = (props) => {

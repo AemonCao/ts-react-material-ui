@@ -20,6 +20,7 @@ import { WelcomeDialog } from "../components/Composition-vs-Inheritance/WelcomeD
 import { SplitPane } from "../components/Composition-vs-Inheritance/SplitPane";
 import { Contacts } from "../components/Composition-vs-Inheritance/Contacts";
 import { Chat } from "../components/Composition-vs-Inheritance/Chat";
+import { SignUpDialog } from "../components/Composition-vs-Inheritance/SignUpDialog";
 
 import {
   makeStyles,
@@ -225,6 +226,7 @@ const App: React.FC = () => {
               <Route path="/Composition-vs-Inheritance">
                 <WelcomeDialog />
                 <SplitPane left={<Contacts />} right={<Chat />} />
+                <SignUpDialog />
               </Route>
               <Route path="/Calculator">
                 <Calculator />

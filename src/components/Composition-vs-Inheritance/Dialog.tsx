@@ -12,6 +12,7 @@ export const Dialog: React.FC<IProps> = (props) => {
     <FancyBorder color="blue">
       <h1 className="Dialog-title">{title}</h1>
       <p className="Dialog-message">{message}</p>
+      {props.children}
     </FancyBorder>
   );
 };

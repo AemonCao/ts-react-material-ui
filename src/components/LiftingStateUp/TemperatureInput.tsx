@@ -1,4 +1,5 @@
 import React from "react";
+import { Input } from "@material-ui/core";
 
 const scaleNames: { [key: string]: string } = {
   c: "摄氏度",
@@ -30,7 +31,7 @@ export class TemperatureInput extends React.Component<IProps, IState> {
     return (
       <fieldset>
         <legend>请输入{scaleNames[scale]}:</legend>
-        <input value={temperature} onChange={this.handleChange} />
+        <Input value={temperature} onChange={this.handleChange} />
       </fieldset>
     );
   }
