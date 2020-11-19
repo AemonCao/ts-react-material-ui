@@ -18,6 +18,8 @@ import FlavorForm from "../components/Form/FlavorForm";
 import { Calculator } from "../components/LiftingStateUp/Calculator";
 import { WelcomeDialog } from "../components/Composition-vs-Inheritance/WelcomeDialog";
 import { SplitPane } from "../components/Composition-vs-Inheritance/SplitPane";
+import { Contacts } from "../components/Composition-vs-Inheritance/Contacts";
+import { Chat } from "../components/Composition-vs-Inheritance/Chat";
 
 import {
   makeStyles,
@@ -222,7 +224,7 @@ const App: React.FC = () => {
             <Switch>
               <Route path="/Composition-vs-Inheritance">
                 <WelcomeDialog />
-                <SplitPane left={<h1>left</h1>} right={<h1>right</h1>} />
+                <SplitPane left={<Contacts />} right={<Chat />} />
               </Route>
               <Route path="/Calculator">
                 <Calculator />
