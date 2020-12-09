@@ -33,7 +33,12 @@ export class ProductTable extends React.Component<IProps, IState> {
     let lastCategory: string | null | undefined = null;
 
     this.props.products.forEach((product) => {
-      if (product.name?.indexOf(filterText) === -1) return;
+      if (
+        product.name
+          ?.toLocaleLowerCase()
+          ?.indexOf(filterText.toLocaleLowerCase()) === -1
+      )
+        return;
       if (inStockOnly && !product.stocked) return;
       if (product.category !== lastCategory) {
         rows.push(

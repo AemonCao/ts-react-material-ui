@@ -1,8 +1,7 @@
 import React from "react";
-import { Select, MenuItem, Input, FormControl } from "@material-ui/core";
 
 interface IState {
-  value: String;
+  value: string;
 }
 
 interface IProps {}
@@ -15,34 +14,26 @@ export default class FlavorForm extends React.Component<IProps, IState> {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(
-    event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
-  ) {
-    if (typeof event.target.value === "string")
-      this.setState({ value: event.target.value });
+  handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    this.setState({ value: event.target.value });
   }
 
-  handleSubmit(event: React.FormEvent<HTMLDivElement>) {
+  handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     alert("你喜欢的水果是：" + this.state.value);
     event.preventDefault();
   }
 
   render() {
     return (
-      <FormControl onSubmit={this.handleSubmit}>
-        <Select
-          label="文章"
-          autoWidth
-          value={this.state.value}
-          onChange={this.handleChange}
-        >
-          <MenuItem value="grapefruit">葡萄柚</MenuItem>
-          <MenuItem value="lime">酸橙</MenuItem>
-          <MenuItem value="coconut">椰子</MenuItem>
-          <MenuItem value="mango">芒果</MenuItem>
-        </Select>
-        <Input type="submit" value="提交" />
-      </FormControl>
+      <form onSubmit={this.handleSubmit}>
+        <select value={this.state.value} onChange={this.handleChange}>
+          <option value="grapefruit">葡萄柚</option>
+          <option value="lime">酸橙</option>
+          <option value="coconut">椰子</option>
+          <option value="mango">芒果</option>
+        </select>
+        <input type="submit" value="提交" />
+      </form>
     );
   }
 }

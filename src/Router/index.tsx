@@ -22,6 +22,8 @@ import { Contacts } from "../components/Composition-vs-Inheritance/Contacts";
 import { Chat } from "../components/Composition-vs-Inheritance/Chat";
 import { SignUpDialog } from "../components/Composition-vs-Inheritance/SignUpDialog";
 import { FilterableProductTable } from "../components/Thinking-In-React/FilterableProductTable";
+import { TextContext } from "../components/Context/TextContext";
+import { Toolbar as MyToolbar } from "../components/Context/Toolbar";
 
 import {
   makeStyles,
@@ -37,7 +39,6 @@ import {
   CssBaseline,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   Drawer,
   Divider,
@@ -46,8 +47,6 @@ import {
   Menu as MenuIcon,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
-  Inbox as InboxIcon,
-  Mail as MailIcon,
 } from "@material-ui/icons";
 
 const drawerWidth = 240;
@@ -112,6 +111,21 @@ const App: React.FC = () => {
     setOpen(false);
   };
 
+  const routeList = [
+    { path: "/", name: "Home" },
+    { path: "/game", name: "Game" },
+    { path: "/topics", name: "Topics" },
+    { path: "/clock", name: "Clock" },
+    { path: "/LoginControl", name: "LoginControl" },
+    { path: "/NameForm", name: "NameForm" },
+    { path: "/EssayForm", name: "EssayForm" },
+    { path: "/FlavorForm", name: "FlavorForm" },
+    { path: "/Calculator", name: "Lifting State Up" },
+    { path: "/Composition-vs-Inheritance", name: "Composition-vs-Inheritance" },
+    { path: "/Thinking-In-React", name: "Thinking-In-React" },
+    { path: "/Context", name: "Context" },
+  ];
+
   return (
     <div className={classes.root}>
       <Router>
@@ -155,23 +169,14 @@ const App: React.FC = () => {
           </div>
           <Divider />
           <List>
-            {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            ))}
-          </List>
-          <Divider />
-          <List>
-            {["All mail", "Trash", "Spam"].map((text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
+            {routeList.map((roter, index) => (
+              <ListItem
+                key={roter.path}
+                button
+                component={Link}
+                to={roter.path}
+              >
+                <ListItemText primary={roter.name} />
               </ListItem>
             ))}
           </List>
@@ -181,52 +186,14 @@ const App: React.FC = () => {
         >
           <div className={classes.drawerHeader} />
           <div>
-            <nav>
-              <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/game">Game</Link>
-                </li>
-                <li>
-                  <Link to="/topics">Topics</Link>
-                </li>
-                <li>
-                  <Link to="/clock">Clock</Link>
-                </li>
-                <li>
-                  <Link to="/toggle">Toggle</Link>
-                </li>
-                <li>
-                  <Link to="/LoginControl">LoginControl</Link>
-                </li>
-                <li>
-                  <Link to="/NameForm">NameForm</Link>
-                </li>
-                <li>
-                  <Link to="/EssayForm">EssayForm</Link>
-                </li>
-                <li>
-                  <Link to="/FlavorForm">FlavorForm</Link>
-                </li>
-                <li>
-                  <Link to="/Calculator">Lifting State Up</Link>
-                </li>
-                <li>
-                  <Link to="/Composition-vs-Inheritance">
-                    Composition-vs-Inheritance
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/Thinking-In-React">Thinking-In-React</Link>
-                </li>
-              </ul>
-            </nav>
-
             {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
             <Switch>
+              <Route path="/Context">
+                <TextContext.Provider value="context">
+                  <MyToolbar></MyToolbar>
+                </TextContext.Provider>
+              </Route>
               <Route path="/Thinking-In-React">
                 <FilterableProductTable
                   products={[
